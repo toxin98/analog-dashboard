@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Film Definition",
+  "type": "object",
+  "required": ["brand", "model"],
+  "additionalProperties": false,
+  "properties": {
+    "brand": {
+      "type": "string",
+      "enum": ["Foma", "Fujifilm", "Ilford", "Kodak"]
+    },
+    "model": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "brand": { "const": "Foma" } } },
+      "then": { "properties": { "model": { "$ref": "./film/foma.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "brand": { "const": "Fujifilm" } } },
+      "then": { "properties": { "model": { "$ref": "./film/fujifilm.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "brand": { "const": "Ilford" } } },
+      "then": { "properties": { "model": { "$ref": "./film/ilford.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "brand": { "const": "Kodak" } } },
+      "then": { "properties": { "model": { "$ref": "./film/kodak.schema.json" } } }
+    }
+  ]
+}

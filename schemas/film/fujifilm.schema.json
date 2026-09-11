@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fujifilm Films",
+  "type": "string",
+  "enum": [
+    "Fujicolor C200",
+    "Superia X-TRA 400",
+    "Pro 400H",
+    "Velvia 50",
+    "Provia 100F",
+    "Neopan Acros 100 II"
+  ]
+}

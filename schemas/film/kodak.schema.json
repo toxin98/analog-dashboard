@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kodak Films",
+  "type": "string",
+  "enum": [
+    "Vision3 500T 5219",
+    "Vision3 250D 5207",
+    "Vision3 200T 5213",
+    "Vision3 50D 5203",
+    "Portra 160",
+    "Portra 400",
+    "Portra 800",
+    "UltraMax 400",
+    "ColorPlus 200",
+    "Gold 200",
+    "Tri-X 400"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roll Metadata Schema",
+  "type": "object",
+  "required": ["id", "film", "format", "camera", "date", "development", "note", "updated"],
+  "additionalProperties": false,
+  "properties": {
+
+    "id": { "type": "string", "pattern": "^roll_\\d{4}$", "description": "Roll unique ID (e.g., roll_0001)" },
+
+    "film": { "$ref": "./film.schema.json" },
+
+    "format": { "type": "string", "enum": ["135", "120"] },
+
+    "camera": { "type": "string" },
+
+    "date": {
+      "type": "object",
+      "required": ["started", "finished"],
+      "additionalProperties": false,
+      "properties": {
+        "started": { "type": "string", "format": "date" },
+        "finished": { "type": "string", "format": "date" }
+      }
+    },
+
+    "development": {
+      "type": "object",
+      "required": ["lab", "process"],
+      "additionalProperties": false,
+      "properties": {
+        "lab": { "type": "string" },
+        "process": { "type": "string", "enum": ["C-41","D-76", "E-6", "ECN-2"] }
+      }
+    },
+
+    "digitization": { "$ref": "./digitization.schema.json" },
+
+    "note": { "type": "string" },
+
+    "updated": { "type": "string", "format": "date-time", "pattern": "Z$", "description": "Last update time, formatted in UTC ISO 8601 format and ending with the letter Z (e.g., 2026-09-12T09:36:09.000Z)" }
+
+  }
+}

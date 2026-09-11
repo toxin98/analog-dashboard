@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Digitization List",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "title": "扫描仪",
+        "type": "object",
+        "required": ["method", "brand", "model"],
+        "additionalProperties": false,
+        "properties": {
+          "method": { "const": "scanner" },
+          "brand": { "type": "string" },
+          "model": { "type": "string" }
+        },
+        "allOf": [
+          { "if": { "properties": { "brand": { "const": "Epson" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "Perfection V850 Pro", "Perfection V800", "Perfection V750 Pro", "Perfection V600"] } } } },
+          { "if": { "properties": { "brand": { "const": "Fujifilm" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "SP-3000", "SP-500", "SP-2000"] } } } },
+          { "if": { "properties": { "brand": { "const": "Hasselblad" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "Flextight X5", "Flextight X1"] } } } },
+          { "if": { "properties": { "brand": { "const": "Nikon" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "Super Coolscan 9000 ED", "Super Coolscan 5000 ED", "Coolscan V ED"] } } } },
+          { "if": { "properties": { "brand": { "const": "Noritsu" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "HS-1800", "LS-600", "LS-1100", "QSS-32"] } } } },
+          { "if": { "properties": { "brand": { "const": "Plustek" } } }, "then": { "properties": { "model": { "enum": ["Unknown", "OpticFilm 8200i Ai", "OpticFilm 8200i SE", "OpticFilm 120 Pro"] } } } }
+        ]
+      },
+      {
+        "title": "相机翻拍",
+        "type": "object",
+        "required": ["method", "details"],
+        "additionalProperties": false,
+        "properties": {
+          "method": { "const": "camera_scan" },
+          "details": { "type": "string" }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Foma Films",
+  "type": "string",
+  "enum": [
+    "Fomapan 100",
+    "Fomapan 200",
+    "Fomapan 400",
+    "Retropan 320 soft"
+  ]
+}
