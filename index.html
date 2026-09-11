@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胶卷暗房</title>
+  <!-- 1. 优先尝试同级目录的 ./config.js（开发/单目录平铺模式） -->
+  <!-- 失败则回退尝试上上级的 ../../config.js（用户） -->
+  <!-- 都失败则静默进入 Worker 代理模式 -->
+  <script 
+    src="./config.js"
+    onerror="
+      const fallback = document.createElement('script');
+      fallback.src = '../../config.js';
+      fallback.onerror = () => console.log('未检测到 config.js，切换为 Worker 代理模式');
+      document.head.appendChild(fallback);
+    ">
+  </script></head>
+<body>
+  <div id="app"></div>
+
+  <!-- 2. 普通无 module 标签，兼容本地 file:/// 与线上静态托管 -->
+  <script src="./analog-dashboard.js"></script>
+</body>
+</html>
